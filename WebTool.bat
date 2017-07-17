@@ -1,5 +1,6 @@
 @echo off
 color 03
+if not exist "%~dp0\cmdbin" md %~dp0\cmdbin
 echo " __          ________ ____    _______ ____   ____  _       _____  ";
 echo " \ \        / /  ____|  _ \  |__   __/ __ \ / __ \| |     / ____| ";
 echo "  \ \  /\  / /| |__  | |_) |    | | | |  | | |  | | |    | (___   ";
@@ -7,17 +8,17 @@ echo "   \ \/  \/ / |  __| |  _ <     | | | |  | | |  | | |     \___ \  ";
 echo "    \  /\  /  | |____| |_) |    | | | |__| | |__| | |____ ____) | ";
 echo "     \/  \/   |______|____/     |_|  \____/ \____/|______|_____/  ";
 echo "                                                                  ";
+echo " __      __    __        ___        _____                         ";
+echo " \ \    / /   /_ |      / _ \      | ____|                        ";
+echo "  \ \  / /     | |     | | | |     | |__                          ";
+echo "   \ \/ /      | |     | | | |     |___ \                         ";
+echo "    \  /       | |  _  | |_| |  _   ___) |                        ";
+echo "     \/        |_| (_)  \___/  (_) |____/                         ";
 echo "                                                                  ";
-echo " __      __    __        ___        _  _                          ";
-echo " \ \    / /   /_ |      / _ \      | || |                         ";
-echo "  \ \  / /     | |     | | | |     | || |_                        ";
-echo "   \ \/ /      | |     | | | |     |__   _|                       ";
-echo "    \  /       | |  _  | |_| |  _     | |                         ";
-echo "     \/        |_| (_)  \___/  (_)    |_|                         ";
 echo "                                                                  ";
-echo "                                                                  ";
-echo.                                        
-timeout /t 6 >nul
+echo We are on github now!
+echo https://github.com/rradt2001/Web-Tool                                 
+timeout /t 7 >nul
 goto home
 
 :home
@@ -37,7 +38,9 @@ echo 4.) Set Default Browser
 echo.
 echo 5.) Refresh
 echo.
-echo 6.) Exit
+echo 6.) Check For Updates
+echo.
+echo 7.) Exit
 echo -------------------------------
 set/p hme=Number:
 if %hme%==1 goto io
@@ -45,7 +48,8 @@ if %hme%==2 goto unblocked
 if %hme%==3 goto bookmark
 if %hme%==4 goto default
 if %hme%==5 goto refresh
-if %hme%==6 goto ext
+if %hme%==6 goto updatecheck
+if %hme%==7 goto ext
 
 :io
 title IO Games
@@ -343,6 +347,38 @@ timeout /t 1 >nul
 start "%~dp0\" WebTool.bat
 exit
 
+:updatecheck
+cls
+echo Checking For Files
+timeout /t 2 >nul
+cls
+if exist "%~dp0\cmdbin\update\update.bat" goto update
+if not exist "%~dp0\cmdbin\update\update.bat" goto makeupdt
+
+:makeupdt
+if not exist "%~dp0\cmdbin\update\update.bat" md %~dp0\cmdbin\update\
+@echo start https://github.com/rradt2001/Web-Tool exit > cmdbin\update\update.bat
+goto updatecheck
+
+:update
+echo If there is an update, you will need to update this you're self.
+timeout /t 5 >nul
+start cmdbin\update\update.bat
+echo This program is running version 1.0.5.
+echo Is there an update?
+echo 1.) Yes
+echo 2.) No
+set /p updt=Number:
+if %updt%==1 goto updtext
+if %updt%==2 goto home
+
+:updtext
+REM Special way to exit telling people to download the update.
+cls
+echo Please update the file by downloading ONLY the batch file and placing in here, when prompted choose to replace the file.
+timeout /t 10 >nul
+exit
+
 :ext
 cls
 echo "  _______   _                       _            _ ";
@@ -353,7 +389,7 @@ echo "    | |    | | | | | (_| | | | | | |   <  \__ \ |_|";
 echo "    |_|    |_| |_|  \__,_| |_| |_| |_|\_\ |___/ (_)";
 echo "                                                   ";
 echo "                                                   ";
-echo THANKS FOR USING WEB TOOL v1.0.4
+echo THANKS FOR USING WEB TOOL v1.0.5
 timeout /t 3 >nul
 cls
 REM Thas ascii art was made using an online generator.
