@@ -26,6 +26,9 @@ Does what it says, currently can only set it to Google Chrome or IE.
 # Refresh
 Used mainy for developers, closes and reopens the program, loading any code changes.
 
+# Check for update
+Opens this page so the user can check for any updates.
+
 # Exit
 Exits the program.
 
