@@ -1,6 +1,6 @@
 # Web-Tool
 Made originally by:
-rradt2001
+rradt2001 and
 GaminRazer
 
 # Currently Version 1.0.5
